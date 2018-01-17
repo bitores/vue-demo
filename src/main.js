@@ -16,7 +16,8 @@ Vue.use(VueLazyLoad,{
     preLoad: 1.3,
     error:'./assets/error.png',
     loading:'./assets/loading.png',
-    attempt: 1
+    attempt: 1,
+    listenEvents: ['scroll', 'mousewheel']
 });
 
 Vue.prototype.$http = axios;
