@@ -9,10 +9,24 @@ import store from '@/vuex/store'
 import axios from 'axios'
 // fore i18n
 import VueI18n from 'vue-i18n'
+// for lazyload
+import VueLazyLoad from 'vue-lazyload'
+
+Vue.use(VueLazyLoad,{
+    preLoad: 1.3,
+    error:'./assets/error.png',
+    loading:'./assets/loading.png',
+    attempt: 1
+});
 
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
+
+// 全局过滤器
+Vue.filter( 'discount' , function(value,discount) {
+  return value  * ( discount / 100 ) ;
+});
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({

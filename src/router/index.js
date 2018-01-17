@@ -4,6 +4,10 @@ import Help from '@/components/Help'
 import Index from '@/components/Index'
 import NotFound from '@/components/404';
 import UserF from '@/components/User';
+import Params from '@/components/Params';
+import Views from '@/components/Views';
+import ViewLeft from '@/components/ViewLeft';
+import ViewRight from '@/components/ViewRight';
 
 Vue.use(VueRouter)
 
@@ -43,7 +47,12 @@ const router = new VueRouter({
             template: `<h3>list参数{{$route.params.id}}</h3>`
           }
         },
-        { path: 'info', component: resolve => require(['@/components/Info.vue'], resolve) }
+        { path: 'info', component: resolve => require(['@/components/Info.vue'], resolve) },
+        {
+          path: 'params',
+          name: 'paramsname',
+          component: Params
+        }
       ],
       // beforeRouteEnter (to, from, next) {
       //   // 在渲染该组件的对应路由被 confirm 前调用
@@ -68,6 +77,21 @@ const router = new VueRouter({
       name: 'Help',
       component: Help,
       meta: { requiresAuth: true }
+    },{
+      path: '/views',
+      name: 'views',
+      component: Views,
+      children:[
+        {
+          path:'multi',
+          components:{
+            default: null,
+            left: ViewLeft,
+            right: ViewRight
+          }
+        }
+      ]
+      
     },{
       path: '*',
       name: '404',

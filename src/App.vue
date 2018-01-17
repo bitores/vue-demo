@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <transition>
+    <transition name="fade">
       <keep-alive>
-        <img src="./assets/logo.png">
         <router-view/>
       </keep-alive>
     </transition>
-    
+    <img src="./assets/logo.png">
+    <img src="./assets/logo.png" lazy="loading">
+<img src="./assets/logo.png" lazy="loaded">
+<img src="./assets/logo.png" lazy="error">
   </div>
 </template>
 
@@ -17,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,5 +27,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 </style>

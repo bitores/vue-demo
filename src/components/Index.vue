@@ -2,9 +2,11 @@
     <div class="index">
         <h1>{{title}}</h1>
         <h2>{{$t("m.AppName")}}</h2>
-        <a href="/help">帮助1</a>
+      
         <router-link :to="'/help'">帮助2</router-link>
         <router-link to="/help">帮助3</router-link>
+         <router-link :to="{name:'views'}">单路由多组件</router-link>
+        <router-link :to="{name:'paramsname', params:{key1:12, key2:'iloveyou'}}">参数</router-link>
 
         <!-- <router-link to="/index/user">用户</router-link>
         <router-link to="/index/info">信息(懒)</router-link>
