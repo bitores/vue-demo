@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './filters'
+import './mixin'
 // for store
 import store from '@/vuex/store'
 // fore axios
@@ -24,10 +26,7 @@ Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
 
-// 全局过滤器
-Vue.filter( 'discount' , function(value,discount) {
-  return value  * ( discount / 100 ) ;
-});
+
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({
